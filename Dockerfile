@@ -1,14 +1,14 @@
-# Dockerfile
 FROM quay.io/hummingbird/php:8.5
 
-# Configura o diretório de trabalho (ajuste conforme a documentação da imagem Hummingbird)
 WORKDIR /var/www/html
 
-# Copia seu código fonte para dentro da imagem
 COPY . .
 
-# Expõe a porta (geralmente 8080 para containers não-root no OpenShift)
+# Expõe a porta 8080
 EXPOSE 8080
 
-# Comando de inicialização (ajuste conforme necessário para esta imagem específica)
+# IMPORTANTE: Reseta o ENTRYPOINT da imagem base para evitar conflitos
+ENTRYPOINT []
+
+# Agora definimos o comando completo para subir o servidor embutido do PHP
 CMD ["php", "-S", "0.0.0.0:8080"]
